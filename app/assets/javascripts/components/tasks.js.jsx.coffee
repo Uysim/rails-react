@@ -6,10 +6,10 @@
 
   componentDidMount: ->
     component = @
-    url = '/api/v1/tasks.json'    
-    fetch(url).then((response) -> 
+    url = '/api/v1/tasks.json'
+    fetch(url).then((response) ->
       response.json()
-    ).then((json) -> 
+    ).then((json) ->
       component.setState(
         tasks: json.data
       )
@@ -19,10 +19,11 @@
     @state.tasks.map((task, index)->
       `<Task name={task.name} key={index}/>`
     )
-  
+
   render: ->
     component = @
-    `<div>{component._tasks()}</div>`
-    
 
-    
+    `<div>
+      <div>{component._tasks()}</div>
+      <TaskForm/>
+     </div>`
