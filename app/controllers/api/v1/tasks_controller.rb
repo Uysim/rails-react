@@ -9,7 +9,7 @@ class Api::V1::TasksController < ApplicationController
     if @task.save
       render json: { data: @task }
     else
-      render json: { data: @task}, status: :error
+      render json: { errors: @task.errors }, status: :error
     end
   end
 

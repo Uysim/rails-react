@@ -20,10 +20,16 @@
       `<Task name={task.name} key={index}/>`
     )
 
+  _addTask: (task)->
+    @state.tasks.push(task)
+    @setState(
+      tasks: @state.tasks
+    )
+
   render: ->
     component = @
 
     `<div>
       <div>{component._tasks()}</div>
-      <TaskForm/>
+      <TaskForm afterCreate={component._addTask}/>
      </div>`
